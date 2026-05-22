@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMK Negeri 4 Buton Utara | Portal Resmi</title>
+    <style>
+        :root {
+            --primary: #1e3c72;
+            --primary-dark: #122548;
+            --secondary: #2a5298;
+            --accent: #3498db;
+            --bg-light: #f4f6f9;
+            --text-dark: #2c3e50;
+            
+            /* Warna Khusus Jurusan */
+            --tkj-color: #0083b0;
+            --bkp-color: #f39c12;
+            --akt-color: #27ae60;
+            --titl-color: #c0392b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Info Bar */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: #fff;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .top-bar a {
+            color: #e0e6ed;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        /* Header Banner */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #fff;
+            padding: 50px 5%;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            margin: 5px 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Section Cards */
+        section {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-top: 4px solid var(--primary);
+        }
+
+        section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        /* Tables */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e8ed;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #fcfdfe;
+        }
+
+        /* Visi Misi Theme */
+        .vision-mission {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            border-top: none;
+        }
+
+        .vision-mission h2 {
+            color: #fff;
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        .vision-box {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid #f1c40f;
+        }
+
+        .mission-list, .tujuan-list {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .mission-list li, .tujuan-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Jurusan Cards */
+        .jurusan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .jurusan-card {
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .jurusan-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .jurusan-card.tkj { background: linear-gradient(135deg, #00b4db, var(--tkj-color)); }
+        .jurusan-card.bkp { background: linear-gradient(135deg, #f1c40f, var(--bkp-color)); color: #222; }
+        .jurusan-card.bkp h3 { color: #222; }
+        .jurusan-card.akt { background: linear-gradient(135deg, #2ecc71, var(--akt-color)); }
+        .jurusan-card.titl { background: linear-gradient(135deg, #e74c3c, var(--titl-color)); }
+
+        .jurusan-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Stats & Badges */
+        .stats-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-box {
+            flex: 1;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #e1e8ed;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .badge {
+            background-color: #e8f4fd;
+            color: var(--primary);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .badge-success {
+            background-color: #e8f8f5;
+            color: #27ae60;
+        }
+
+        /* Map and Media Box */
+        .media-box {
+            background-color: #edf2f7;
+            border: 2px dashed #cbd5e0;
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+            color: #4a5568;
+            margin-top: 15px;
+        }
+
+        .media-box a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 250px;
+            margin-top: 15px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .doc-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            color: #a0aec0;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div>📍 Jl. H. Ben No. 1 Laea, Desa Eelahaji, Kec. Kulisusu, Kab. Buton Utara, Kode Pos 93741</div>
+        <div>
+            <a href="mailto:smkn1kulisusu@gmail.com">✉️ smkn1kulisusu@gmail.com</a>
+            <a href="http://www.smkn1kulisusu.wordpress.com" target="_blank">🌐 Website Resmi</a>
+        </div>
+    </div>
+
+    <header>
+        <h1>SMK Negeri 4 Buton Utara</h1>
+        <p>"Terwujudnya SMK yang berkualitas, religius, berkarakter dan berwawasan wirausaha"</p>
+    </header>
+
+    <nav>
+        <a href="#profil">Profil</a>
+        <a href="#visimisi">Visi & Misi</a>
+        <a href="#jurusan">Jurusan</a>
+        <a href="#prestasi">Prestasi</a>
+        <a href="#dokumentasi">Dokumentasi</a>
+    </nav>
+
+    <div class="container">
+        <div class="grid-2">
+            
+            <main>
+                <section id="profil">
+                    <h2>📌 Profil Lengkap Sekolah</h2>
+                    <div class="table-responsive">
+                        <table>
+                            <tr><td><strong>Nama Resmi</strong></td><td>SMK Negeri 4 Buton Utara (SMKN 4 BUTON UTARA)</td></tr>
+                            <tr><td><strong>NPSN</strong></td><td><span class="badge">40406060</span></td></tr>
+                            <tr><td><strong>Status</strong></td><td>Negeri</td></tr>
+                            <tr><td><strong>Jenjang Pendidikan</strong></td><td>Sekolah Menengah Kejuruan (SMK)</td></tr>
+                            <tr><td><strong>Akreditasi</strong></td><td><span class="badge badge-success">B</span> (Berdasarkan SK No. 053/BAN-SM/SK/2019 tertanggal 21 Januari 2019)</td></tr>
+                            <tr><td><strong>Luas Tanah</strong></td><td>35.614 m²</td></tr>
+                            <tr><td><strong>Kepala Sekolah</strong></td><td>Bapak Adilun, S.Pd., M.A.P.</td></tr>
+                            <tr><td><strong>Operator Sekolah</strong></td><td>Bapak Amrin. A., S.Pd.</td></tr>
+                            <tr><td><strong>Dasar Hukum Pendirian</strong></td><td>SK Pendirian No. 38 Tahun 2012 (Tanggal 2 Januari 2012) <br> SK Operasional No. 43 Tahun 2012</td></tr>
+                            <tr><td><strong>Naungan</strong></td><td>Kementerian Pendidikan dan Kebudayaan Republik Indonesia</td></tr>
+                            <tr><td><strong>Jam Operasional</strong></td><td>Senin - Sabtu: 07.00 - 13.30 (Khusus hari Jumat s/d pukul 11.00), Minggu Tutup</td></tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="visimisi" class="vision-mission">
+                    <h2>🎯 Tujuan, Visi & Misi</h2>
+                    
+                    <h3 style="margin-top:10px;">TUJUAN PENDIDIKAN MENENGAH</h3>
+                    <p style="margin-bottom:15px; opacity:0.9; font-size:0.95rem;">Meningkatkan kecerdasan, pengetahuan, kepribadian akhlak mulia, serta keterampilan untuk hidup mandiri dan mengikuti pendidikan lebih lanjut dengan memiliki keseimbangan sikap, pengetahuan, dan keterampilan yang terpadu dalam kehidupan sehari-hari.</p>
+
+                    <h3>VISI</h3>
+                    <div class="vision-box">
+                        "Terwujudnya SMK yang berkualitas, religius, berkarakter dan berwawasan wirausaha."
+                    </div>
+                    
+                    <h3>MISI</h3>
+                    <ol class="mission-list">
+                        <li>Membekali siswa dengan ilmu pengetahuan dan teknologi, keterampilan serta bertakwa kepada Tuhan Yang Maha Esa.</li>
+                        <li>Menumbuhkan siswa dengan nilai-nilai karakter bangsa dalam kegiatan sekolah.</li>
+                        <li>Menghasilkan lulusan tenaga kerja yang kompeten dan profesional.</li>
+                        <li>Menyelenggarakan pendidikan dan pelatihan yang berbasis kompetensi sesuai dengan kebutuhan Dunia Usaha/Dunia Industri.</li>
+                        <li>Mengoptimalkan pengelolaan sekolah secara profesional.</li>
+                        <li>Mengembangkan pendidikan berbasis karakter.</li>
+                        <li>Mengembangkan pendidikan berbasis kewirausahaan.</li>
+                    </ol>
+
+                    <h3>TUJUAN SMK NEGERI 4 BUTON UTARA</h3>
+                    <ol class="tujuan-list">
+                        <li>Menghasilkan lulusan yang bertakwa, berakhlak mulia, produktif, kreatif dan inovatif serta mampu melaksanakan hak dan kewajibannya sebagai warga negara.</li>
+                        <li>Menjalin kerja sama yang erat dan saling menguntungkan dengan dunia usaha/Dunia Industri untuk pelaksanaan prakerin siswa guna meningkatkan keterampilan dan kemampuan siswa.</li>
+                        <li>Meningkatkan kecerdasan yang bermartabat, berkarakter dan berwawasan lingkungan.</li>
+                        <li>Meningkatkan tenaga kerja tingkat menengah yang kompeten di bidangnya untuk siap bersaing di era global baik hidup mandiri maupun melanjutkan pendidikan yang lebih tinggi.</li>
+                        <li>Menjadikan sekolah sebagai pusat pendidikan dan pelatihan.</li>
+                        <li>Menyelenggarakan pembelajaran secara efektif dengan mengintegrasikan keunggulan lokal berbasis TIK.</li>
+                        <li>Meningkatkan kompetensi tenaga pendidik dan kependidikan dalam merespon perkembangan iptek.</li>
+                        <li>Membekali peserta didik dengan ilmu pengetahuan dan teknologi serta mampu mengembangkan jiwa kewirausahaan.</li>
+                        <li>Terciptanya hubungan kerja sama antar pihak sekolah, orang tua, alumni, masyarakat dan instansi di lingkungan sekolah.</li>
+                        <li>Memiliki sarana dan prasarana yang memadai dalam rangka mendukung program kerja sekolah.</li>
+                    </ol>
+                </section>
+
+                <section id="jurusan">
+                    <h2>💻 Program Keahlian (Jurusan)</h2>
+                    <p style="font-size:0.95rem; color:#666;">Empat program keahlian unggulan masa depan dengan kompetensi berbasis kebutuhan industri:</p>
+                    <div class="jurusan-grid">
+                        <div class="jurusan-card tkj">
+                            <h3>TKJ</h3>
+                            <p>Teknik Komputer dan Jaringan</p>
+                        </div>
+                        <div class="jurusan-card bkp">
+                            <h3>BKP</h3>
+                            <p>Bisnis Konstruksi dan Properti</p>
+                        </div>
+                        <div class="jurusan-card akt">
+                            <h3>AKT</h3>
+                            <p>Akuntansi dan Keuangan Lembaga</p>
+                        </div>
+                        <div class="jurusan-card titl">
+                            <h3>TITL</h3>
+                            <p>Teknik Instalasi Tenaga Listrik</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="prestasi">
+                    <h2>🏆 Galeri Prestasi Siswa (2025)</h2>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Ajang / Lembaga Resmi</th>
+                                    <th>Nama Siswa / Jurusan</th>
+                                    <th>Capaian Prestasi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Lomba Kompetensi Siswa (LKS) Provinsi 2025</strong><br><small>IT Network System Administration</small></td>
+                                    <td>Ade Randa<br><small>Representasi Jurusan TKJ</small></td>
+                                    <td><span class="badge badge-success">Juara 3 Tingkat Provinsi</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Paskibraka Kabupaten Buton Utara 2025</strong><br><small>Badan Kesbangpol</small></td>
+                                    <td>1. Galang<br>2. Muhamad Suratman</td>
+                                    <td><span class="badge badge-success">Lolos Seleksi Inti (Bagian dari 70 Pelajar Terbaik)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+
+            <aside>
+                <section style="border-top: 4px solid var(--accent);">
+                    <h2>📊 Potensi & Data Akademik</h2>
+                    <div class="stats-container">
+                        <div class="stat-box">
+                            <div class="stat-number">91</div>
+                            <small>Siswa Laki-laki</small>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">47</div>
+                            <small>Siswa Perempuan</small>
+                        </div>
+                    </div>
+                    <div style="text-align:center; margin-top:15px; font-weight:bold; color:var(--primary); font-size:1.1rem;">
+                        Total: 138 Peserta Didik
+                    </div>
+                </section>
+
+                <section style="border-top: 4px solid var(--bkp-color);">
+                    <h2>🗺️ Peta Lokasi Kampus</h2>
+                    <p style="font-size:0.85rem; color:#666;">Koordinat: Lintang: 4° 44' 42.36" S, Bujur: 123° 10' 52.32" E</p>
+                    
+                    <div class="map-container">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=-4.7451,123.1812&z=15&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="media-box" style="padding: 10px; margin-top:10px;">
+                        <a href="https://maps.app.goo.gl/N15CCwqw8egUCwXJ8" target="_blank">🔗 Buka di Google Maps</a>
+                    </div>
+                </section>
+
+                <section style="border-top: 4px solid var(--tkj-color);">
+                    <h2>📢 Media Sosial & Promosi</h2>
+                    <table style="margin:0;">
+                        <tr>
+                            <td>📘 <strong>Facebook</strong></td>
+                            <td>Official Account SMKN 4 BUTUR<br><small style="color:#27ae60; font-weight:bold;">1.741 Likes</small></td>
+                        </tr>
+                        <tr>
+                            <td>▶️ <strong>YouTube</strong></td>
+                            <td>SMKN 4 Buton Utara Official<br><small>(Video Profil & Semi-Dokumenter)</small></td>
+                        </tr>
+                        <tr>
+                            <td>⭐ <strong>Google Bisnisku</strong></td>
+                            <td>Rating Resmi: <span class="badge badge-success">4.5 / 5.0</span></td>
+                        </tr>
+                    </table>
+                </section>
+            </aside>
+
+        </div>
+
+        <section id="dokumentasi" style="border-top: 4px solid var(--titl-color);">
+            <h2>📸 Galeri Dokumentasi Kegiatan Praktik Kompetensi Jurusan</h2>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">Aset data visual terverifikasi dari arsip dokumentasi portofolio akademik sekolah:</p>
+            <div class="doc-grid">
+                <div class="doc-item" style="border-left: 4px solid var(--tkj-color);">
+                    <div style="font-size: 2rem; margin-bottom: 5px;">🖥️</div>
+                    <strong>Praktek TKJ.pdf</strong>
+                    <p style="font-size:0.8rem; color:#7f8c8d; font-weight:normal; margin-top:5px;">Administrasi Jaringan & Server</p>
+                </div>
+                <div class="doc-item" style="border-left: 4px solid var(--bkp-color);">
+                    <div style="font-size: 2rem; margin-bottom: 5px;">🏗️</div>
+                    <strong>Praktek BKP.pdf</strong>
+                    <p style="font-size:0.8rem; color:#7f8c8d; font-weight:normal; margin-top:5px;">Konstruksi Sipil & Properti</p>
+                </div>
+                <div class="doc-item" style="border-left: 4px solid var(--titl-color);">
+                    <div style="font-size: 2rem; margin-bottom: 5px;">⚡</div>
+                    <strong>Praktek TITL.pdf</strong>
+                    <p style="font-size:0.8rem; color:#7f8c8d; font-weight:normal; margin-top:5px;">Instalasi Daya & Tenaga Listrik</p>
+                </div>
+                <div class="doc-item" style="border-left: 4px solid var(--akt-color);">
+                    <div style="font-size: 2rem; margin-bottom: 5px;">📊</div>
+                    <strong>Praktek Akuntansi.pdf</strong>
+                    <p style="font-size:0.8rem; color:#7f8c8d; font-weight:normal; margin-top:5px;">Siklus & Laporan Keuangan</p>
+                </div>
+            </div>
+            <div class="media-box" style="margin-top:20px; background-color:#f8fafc; border-style: solid;">
+                📄 <strong>Dokumen Atribut Administrasi Resmi Terlampir:</strong> Logo SMK.pdf & papan nama sekolah..pdf (Terakreditasi B)
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 SMK Negeri 4 Buton Utara. Seluruh Hak Cipta Dilindungi.</p>
+        <p style="font-size: 0.75rem; margin-top: 5px; color: #718096;">Portal Profil Terpadu - Berkualitas, Religius, Berkarakter, Berwawasan Wirausaha</p>
+    </footer>
+
+</body>
+</html>
